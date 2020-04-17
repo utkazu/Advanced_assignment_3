@@ -16,6 +16,19 @@
 						</td>
 						<td><%= @book_show.title %></td>
 						<td><%= @book_show.body %></td>
+						<td>
+						<% if Favorite.find_by(user_id: current_user.id, book_id: @book_show.id) %>
+							<%= link_to "/favorites/#{@book_show.id}/destroy", method: :post do %>
+								<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @book_show.favorites.count %>
+							<% end%>
+						<% else %>
+							<%= link_to "/favorites/#{@book_show.id}/create", method: :post do %>
+								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> <%= @book_show.favorites.count %>
+							<% end %>
+						<% end %>
+						</td>
+						<td>コメント数</td>
+						<td></td>
 						<% if @user.id == current_user.id %>
 							<td>
 								<%= link_to edit_book_path(@book_show.id) do %>
