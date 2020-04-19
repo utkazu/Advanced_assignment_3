@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   post 'favorites/:book_id/create' => 'favorites#create'
   post 'favorites/:book_id/destroy' => 'favorites#destroy'
+  post 'book_comments/:book_id/create' => 'book_comments#create'
+  post 'book_comments/:book_comment_id/destroy' => 'book_comments#destroy'
 end

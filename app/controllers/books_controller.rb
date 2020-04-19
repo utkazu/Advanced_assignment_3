@@ -10,7 +10,9 @@ class BooksController < ApplicationController
 	def show
     @book_show = Book.find(params[:id])
 		@user = User.find(@book_show.user_id)
-    @book = Book.new
+		@book = Book.new
+		@comments = BookComment.where(book_id: @book_show.id).order(:id)
+		@comment = BookComment.new
 	end
 
 	def create
