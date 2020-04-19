@@ -19,7 +19,7 @@
 						<td>
 							<%= render 'favorite_button', book: @book_show %>
 						</td>
-						<td>コメント数</td>
+						<td>コメント数： <%= @book_show.book_comments.count %></td>
 						<td></td>
 						<% if @user.id == current_user.id %>
 							<td>
