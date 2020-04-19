@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
       user_id: current_user.id,
       book_id: params[:book_id]
     )
-    @favorite.destroy
+    @favorite.delete #destroyだと何故かNoMethodErrorが出る。多分belongs_toが原因
     redirect_to request.referrer
   end
 end
